@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vittal Rajagopalan – Engineering Portfolio</title>
+
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  HOW TO EDIT THIS PAGE                                           ║
+  ║                                                                  ║
+  ║  You only ever need to change the section marked                 ║
+  ║  "YOUR CONTENT" (search the file for that phrase).               ║
+  ║  Everything below it is code that builds the page. Leave it.     ║
+  ║                                                                  ║
+  ║  Add images: put them in an "images" folder next to this file    ║
+  ║  and list their names, e.g. images: ["images/blimp-1.jpg"].      ║
+  ║  Change colors: edit the 5 values under "COLORS" just below.     ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+
+<style>
+/* ===== COLORS (change these to restyle the whole page) ===== */
+:root{
+  --bg:#eef1f4;      /* page background */
+  --panel:#f8fafb;   /* card background */
+  --ink:#14202b;     /* text and borders */
+  --mute:#566574;    /* secondary text */
+  --acc:#1f4fd8;     /* accent (buttons, links) */
+}
+@media (prefers-color-scheme:dark){:root{--bg:#10171e;--panel:#17212a;--ink:#e6ecf1;--mute:#93a3b1;--acc:#7da2ff}}
+
+/* ===== Layout and styling (no need to edit below this line) ===== */
+:root{--line:color-mix(in srgb,var(--ink) 25%,transparent);--disp:"Helvetica Neue",Arial,sans-serif;--body:Georgia,serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--body)}
+main{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 60px}
+a{color:var(--acc)} button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+header{padding:56px 0 24px;border-bottom:2px solid var(--ink)}
+h1{font:800 clamp(2.2rem,7vw,4.2rem)/1 var(--disp);letter-spacing:-.03em;margin:0 0 12px}
+.tag{font-size:1.1rem;margin:0 0 14px;max-width:36em}
+.links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 .95rem var(--disp)}
+h2{font:700 1.3rem var(--disp);margin:36px 0 12px}
+.grp{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:0 0 10px}
+.grp b{font:600 .9rem var(--disp);min-width:9em}
+.chip{font:.9rem var(--disp);border:1.5px solid var(--ink);padding:2px 10px;border-radius:2px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px}
+.filters button{font:500 .9rem var(--disp);background:none;border:1.5px solid var(--ink);border-radius:2px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.grid{columns:460px;margin-top:16px}
+.card{break-inside:avoid;border:1.5px solid var(--ink);background:var(--panel);display:flex;flex-direction:column;margin:0 0 24px}
+.main{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,var(--bg),var(--bg) 10px,var(--panel) 10px,var(--panel) 20px);display:grid;place-items:center;overflow:hidden;border-bottom:1.5px solid var(--ink);color:var(--mute);font:.9rem var(--disp)}
+.main img{width:100%;height:100%;object-fit:contain;display:block}
+.thumbs{display:flex;gap:6px;padding:6px;overflow-x:auto;border-bottom:1px solid var(--line)}
+.thumbs:empty{display:none}
+.th{width:64px;height:44px;padding:0;border:2px solid transparent;background:none;cursor:pointer;flex:none}
+.th img{width:100%;height:100%;object-fit:contain;display:block}
+.th.on{border-color:var(--acc)}
+.body{padding:12px 14px 14px}
+.body h3{font:700 1.2rem/1.2 var(--disp);margin:0 0 4px}
+.sum{margin:0 0 8px;font-size:.95rem;color:var(--mute)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 16px;font:.82rem var(--disp)}
+.meta b{color:var(--mute);font-weight:500;margin-right:4px}
+details{margin-top:8px;font-size:.92rem}
+summary{font:600 .85rem var(--disp);cursor:pointer}
+details ul{margin:6px 0 0;padding-left:1.1em}
+footer{border-top:2px solid var(--ink);margin-top:40px;padding-top:16px;color:var(--mute);font-size:.9rem}
+</style>
+</head>
+<body>
+<main id="app"></main>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   YOUR CONTENT  ←  this is the only part you need to edit
+   Rules: keep the quotes "like this" and the commas between items.
+   Use \" if you need a quote mark inside text.
+   ════════════════════════════════════════════════════════════════ */
+
+const SITE = {
+  name:    "Vittal Rajagopalan",
+  tagline: "Engineering student working with robots, mechanical design, and other cool stuff.",
+  footer:  "Purdue University. Current work: Undergraduate Researcher at the ARIES Lab, OUR Scholar at RCAC/HiFi Labs",
+
+  // Contact links. Links with an empty url "" are hidden automatically.
+  // Email example:  url: "mailto:you@purdue.edu"
+  links: [
+    { label: "Email",    url: "" },
+    { label: "LinkedIn", url: "" },
+    { label: "GitHub",   url: "" },
+    { label: "Resume",   url: "" },   // e.g. "resume.pdf" placed next to this file
+  ],
+};
+
+// ─── SKILLS ─────────────────────────────────────────────────────
+// Each group has a name and a list of skills. Add, remove, or rename freely.
+const SKILLS = [
+  { group: "Software",   items: ["Python", "OpenCV", "YOLOv8", "ROS 2", "ParaView", "Linux", "Git"] },
+  { group: "Hardware",   items: ["Raspberry Pi", "Arduino", "ESP32", "KiCad"] },
+  { group: "Mechanical", items: ["CAD", "3D printing", "Prototyping"] },
+];
+
+// ─── PROJECTS ───────────────────────────────────────────────────
+// Projects appear in this order. To add one: copy the TEMPLATE below,
+// paste it anywhere in the list (don't forget the comma after "}"), and fill it in.
+// To hide a project without deleting it, add   hidden: true,
+// To remove one, delete everything from its "{" to its "},".
+//
+//   TEMPLATE ──────────────────────────────────────────────────
+//   {
+//     title:    "Project name",
+//     category: "Robotics",              // groups the filter buttons; any word(s) you like
+//     summary:  "One or two sentences.",
+//     role:     "What you did",          // optional, "" to hide
+//     affiliation: "Lab or organization", // optional, "" to hide; displayed as "Part of"
+//     tools:    "CAD, Python",           // optional
+//     status:   "Completed 2026",        // optional
+//     details:  ["First point", "Second point"],   // optional, shown under "Details"
+//     images:   ["images/name-1.jpg", "images/name-2.jpg"],  // optional; first is the big one
+//     imageFit: "contain",                // optional; use "cover" to crop the image
+//     imagePosition: "center center",     // optional; e.g. "top center" or "35% 20%"
+//     link:     "",                      // optional: paper, repo, or video URL
+//   },
+//   ───────────────────────────────────────────────────────────
+const PROJECTS = [
+  {
+    title: "VLM-Based Autonomous Robot",
+    category: "Robotics",
+    summary: "A robot generalist policy based on an open-source vision-language-model pipeline. Enables robots to remember objects, interact with them, and operate in known/unknown environments: just given a basic text prompt.",
+    role: "Researcher",
+    affiliation: "ARIES",
+    tools: "ROS 2, RTAB-Map, Nav2, Behavior 1k, OmniGibson",
+    status: "In progress",
+    details: [
+      "I've taken the existing pipeline and begun designing environments with safety challenges (mirrors, water spills, moving obstacles). These each push the robot's protocol to the limit, and I hope to improve the system's observation and safety so the lab can actually test physically.",
+    ],
+    images: ["images/ARIES1.png"],
+    link: "",
+  },
+  {
+    title: "Robotic Grasping Research",
+    category: "Robotics",
+    summary: "Created a Novel Benchmarking Methodology for Grasp Stability",
+    role: "Research Intern",
+    affiliation: "National Institute of Standards and Technology",
+    tools: "CAD, 3D printing, Arduino, ESP32, load cells",
+    status: "NIST Internal Paper",
+    details: [
+      "Created a new, low-cost benchmarking system for improving robotic grasp quality",
+      "Designed a load cell-based handheld device and compared it to existing testbeds",
+      "Used my benchmark to modify critical components of a robotic hand for improved grasp abilities",
+    ],
+    images: ["images/NIST1.jpg","images/NIST2.png","images/NIST3.jpg"],
+    link: "",
+  },
+  {
+    title: "Land-traversing rover",
+    category: "Robotics",
+    summary: "Autonomous Raspberry-Pi based cargo rover for ENGR 16100: follows a guideline, delivers three cargo shapes to target sites, and holds a set speed.",
+    role: "Team member",
+    affiliation: "ENGR 16100",
+    tools: "Python, Raspberry Pi, line-finder sensors",
+    status: "In Progress",
+    details: [],
+    images: [],
+    link: "",
+  },
+  {
+    title: "Remotely operable blimp",
+    category: "Electronics",
+    summary: "A Raspberry Pi blimp controlled over Wi-Fi, with a custom lightweight housing and vision experiments.",
+    role: "Electronics, design, vision",
+    tools: "Raspberry Pi, CAD, OpenCV, YOLOv8",
+    status: "",
+    details: [
+      "Diagnosed H-bridge motor chip failures and developed a fix.",
+      "Printed a low-weight casing for the Pi, batteries, and motors.",
+      "Controlled over VNC and SSH.",
+      "Tried face detection and AprilTag positioning.",
+    ],
+    images: ["images/blimp.jpg"],
+    link: "",
+  },
+  {
+    title: "VR visualization of an exoplanet",
+    category: "AI and vision",
+    summary: "Beyond-line-of-sight control of a Raspberry Pi rover on a mock exoplanet, visualized in ParaView with computer-vision tracking.",
+    role: "", 
+    tools: "ParaView, computer vision, Raspberry Pi", status: "paper published by SIGGRAPH",
+    details: [
+      "Built a software structure enabling live tracking of a real rover on a real surface into a VR environment with a digital twin",
+      "Enabled operation very similar to a true space mission, where the rover is controlled and data is provided while operators have no visual control"
+    ], 
+    images: ["images/paraview.png"],
+    link: "",
+  },
+  {
+    title: "Riptide detection drone",
+    category: "AI and vision",
+    summary: "CNN models trained on riptide data to detect rip currents from the air.",
+    role: "", tools: "CNNs, drone imagery", status: "",
+    details: 
+    [
+      "Utilized open-source riptide-detection models, identifying versions maximized for active drone monitoring",
+      "Partnered with SECOORA (part of NOAA) hoping to utilize the AI model in already established beach-facing camera-mounts (Unfortunately fell through with federal budget cuts)"
+    ]
+    , images: ["images/rescueReach.jpg"], link: "",
+  },
+  { title: "Reaction Control Wheel for Rocket Launch Structure", category: "Mechanical design", summary: "Building a reaction control wheel to stabilize the launch structure of a balloon mounted rocket", 
+  role: "", 
+  affiliation: "Purdue Orbital",
+  tools: "Fusion 360, PID", 
+  status: "In Progress",
+  details: [
+    "Recovered past mission test data, revealing that the launch structure had extreme spin while in the air",
+    "Developed mathematical models to calculate the necessary weight and design of the reaction flywheel",
+    "Performed frequency-variation tests to tune PID to the forces expected in flight"
+  ], images: ["images/reactionWheel.png"], link: "" },
+  
+  { title: "Lunabotics Competition Excavation/Deposition Arm",        category: "Mechanical design", 
+  summary: "Designing the motorized arm for an autonomous lunar regolith mining robot", role: "", affiliation: "Purdue Lunabotics", tools: "", skills: "Collaborative CAD Workflow", status: "", details: [], images: ["images/lunaboticsArm.png"], link: "" },
+  
+  { title: "Wildlife audio analysis",           category: "AI and vision",     summary: "Developing BiodiversityHUb, a tool intended to standardize the world of environmental audio research", role: "OUR Scholar Researcher", affiliation: "Purdue HiFi Lab", tools: "", status: "In Progress",
+  details: [
+    "Identifying relationships in Audio Indeces (Statistical Analysis) and BirdNet (AI identification) results",
+    "Designing a user-friendly dashboard to simplify the current audio research pipeline, taking 6 steps and countless variables researchers need to keep track of, and making it all operable with one click",
+    "Integrating AI-based reasoning and analysis by improving the system of data structuring and compilation"
+  ], images: ["images/HiFi.png"], link: "" },
+
+  { title: "Rings",                             category: "Other",             
+  summary: "Making some cool rings at the Bechtel Hotworks Makerspace", role: "", tools: "", status: "", details: [], images: [], link: "" },
+  
+  { title: "Vision Based Robot Decision Making",                             category: "AI and vision",             
+  summary: "Learning to work with reinforcement learning development by training an agent to reach a goal while avoiding a moving obstacle", 
+  role: "", tools: "", status: "", details: [], images: ["images/cowProject.png"], link: "" },
+
+  { title: "Blinky 5.0",                             category: "Electronics",             summary: "Following the Blinky 5.0 tutorial to learn PCB design skills by creating a PCB of a 7555 timer-based circuit", role: "", tools: "", status: "In Progress", details: [], images: ["images/blinky.jpg"], link: "" },
+
+  { title: "Air engine design",                 category: "Mechanical design", summary: "Designing a system operated by a pressurized air engine, modelled and designed with true GD&T manufacturability standards", role: "", affiliation: "ME 164", skills: "Design, NX, GD&T, CAD", status: "In Progress", details: [], images: ["images/airEngine.png"], link: "" },
+];
+
+/* ════════════════════════════════════════════════════════════════
+   END OF YOUR CONTENT. The code below builds the page. Leave it.
+   ════════════════════════════════════════════════════════════════ */
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const app = document.getElementById("app");
+let filter = "all";
+const shown = {};                       // which image is showing per project
+function card(p, i) {
+  const n = p.images.length;
+  const k = n ? Math.min(shown[i] || 0, n - 1) : 0;
+  const imageFit = p.imageFit || "contain";
+  const imagePosition = p.imagePosition || "center center";
+
+  const main = n
+    ? `<img src="${esc(p.images[k])}" alt="${esc(p.title)}" style="object-fit:${esc(imageFit)};object-position:${esc(imagePosition)}">`
+    : `<span>Photos coming soon</span>`;
+
+  const thumbs = n > 1
+    ? p.images.map((s, j) =>
+        `<button class="th ${j === k ? "on" : ""}" data-p="${i}" data-j="${j}" aria-label="Show image ${j + 1}">
+          <img src="${esc(s)}" alt="">
+        </button>`
+      ).join("")
+    : "";
+
+  const meta = [
+    ["Role", p.role],
+    ["Part of", p.affiliation],
+    ["Tools", p.tools],
+    ["Status", p.status]
+  ].filter(m => m[1])
+   .map(m => `<span><b>${m[0]}</b>${esc(m[1])}</span>`)
+   .join("");
+
+  const det = p.details.length
+    ? `<details open><summary>Details</summary><ul>${p.details.map(d => `<li>${esc(d)}</li>`).join("")}</ul></details>`
+    : "";
+
+  const link = p.link
+    ? `<p><a href="${esc(p.link)}" target="_blank" rel="noopener">View project</a></p>`
+    : "";
+
+  return `<article class="card">
+    <div class="main">${main}</div>
+    <div class="thumbs">${thumbs}</div>
+    <div class="body">
+      <h3>${esc(p.title)}</h3>
+      ${p.summary ? `<p class="sum">${esc(p.summary)}</p>` : ""}
+      <div class="meta">${meta}</div>
+      ${det}
+      ${link}
+    </div>
+  </article>`;
+}
+
+function render() {
+  const list = PROJECTS.map((p, i) => ({ p, i })).filter(x => !x.p.hidden);
+  const cats = [...new Set(list.map(x => x.p.category).filter(Boolean))];
+  if (filter !== "all" && !cats.includes(filter)) filter = "all";
+  const links = SITE.links.filter(l => l.url).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
+  const skills = SKILLS.map(g => `<div class="grp"><b>${esc(g.group)}</b>${g.items.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div>`).join("");
+  const filters = ["all", ...cats].map(c => `<button aria-pressed="${c === filter}" data-f="${esc(c)}">${c === "all" ? "All" : esc(c)}</button>`).join("");
+  app.innerHTML = `<header><h1>${esc(SITE.name)}</h1><p class="tag">${esc(SITE.tagline)}</p><div class="links">${links}</div></header>
+    <h2>Skills</h2>${skills}
+    <h2>Projects</h2><div class="filters" role="group" aria-label="Filter projects">${filters}</div>
+    <div class="grid">${list.filter(x => filter === "all" || x.p.category === filter).map(x => card(x.p, x.i)).join("")}</div>
+    <footer>${esc(SITE.footer)}</footer>`;
+}
+
+app.addEventListener("click", e => {
+  const f = e.target.closest("[data-f]"), t = e.target.closest("[data-j]");
+  if (f) { filter = f.dataset.f; render(); }
+  if (t) { shown[t.dataset.p] = +t.dataset.j; render(); }
+});
+document.title = SITE.name + " – Engineering Portfolio";
+render();
+</script>
+</body>
+</html>
